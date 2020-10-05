@@ -4,4 +4,5 @@
     <string name="hint_fill">Название</string>
     <string name="zero">0</string>
     <string name="def_simbol">₽</string>
+    <string name="uchet">Учет бюджета</string>
 </resources>

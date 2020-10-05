@@ -9,4 +9,11 @@
 
     <color name="enable">#000000</color>
     <color name="disable">#cccccc</color>
+    
+    <color name="colorItem">#fcc31e</color>
+    <color name="colorItemDark">#daa10c</color>
+
+    
+    
+    
 </resources>
