@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">FirstExemple</string>
+    <string name="new_item">Новая запись</string>
+    <string name="hint_fill">Название</string>
+    <string name="zero">0</string>
+    <string name="def_simbol">₽</string>
 </resources>
