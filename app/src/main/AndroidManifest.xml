@@ -11,18 +11,16 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="AllowBackup">
-
-        <activity android:name=".ItemsActivity" android:label="@string/uchet">
+        <activity
+            android:name=".MainActivity"
+            android:label="@string/uchet">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".AddItemActivity">
-        </activity>
-        <activity android:name=".MainActivity">
-
-        </activity>
+        <activity android:name=".AddItemActivity" />
     </application>
 
 </manifest>

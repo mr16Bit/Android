@@ -1,47 +1,29 @@
 package com.example.firstexemple;
 
 import android.os.Bundle;
-import android.util.Log;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentPagerAdapter;
+import androidx.viewpager.widget.ViewPager;
+
+import com.google.android.material.tabs.TabLayout;
 
 public class MainActivity extends AppCompatActivity {
+    private ViewPager viewPager;
+    private TabLayout tabLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Log.i("Testing_log", "onCreate method");
-    }
 
-    @Override
-    protected void onStart() {
-        super.onStart();
-        Log.i("Testing_log", "onStart method");
-        Log.i("Testing_log", "onStart method2");
-    }
+        tabLayout = findViewById(R.id.tab_layout);
+        viewPager = findViewById(R.id.view_pager);
 
-    @Override
-    protected void onStop() {
-        super.onStop();
-        Log.i("Testing_log", "onStop method");
-    }
+        MainPagesAdapter adapter = new MainPagesAdapter(getSupportFragmentManager(), FragmentPagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT,this);
 
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        Log.i("Testing_log", "onDestroy method");
-    }
+        viewPager.setAdapter(adapter);
+        tabLayout.setupWithViewPager(viewPager);
 
-    @Override
-    protected void onPause() {
-        super.onPause();
-        Log.i("Testing_log", "onPause method");
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        Log.i("Testing_log", "onResume method");
     }
 }

@@ -5,4 +5,14 @@
     <string name="zero">0</string>
     <string name="def_simbol">₽</string>
     <string name="uchet">Учет бюджета</string>
+
+    <string name="incomes">Доходы</string>
+    <string name="expenses">Разходы</string>
+    <string name="balance">Баланс</string>
+
+    <string-array name="tabs_title">
+        <item>@string/incomes</item>
+        <item>@string/expenses</item>
+        <item>@string/balance</item>
+    </string-array>
 </resources>
