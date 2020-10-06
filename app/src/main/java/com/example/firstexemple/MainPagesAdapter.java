@@ -25,17 +25,17 @@ public class MainPagesAdapter extends FragmentPagerAdapter {
     public Fragment getItem(int position) {
         switch (position){
             case PAGE_INCOMES:{
-                return ItemsFragment.CreateItemFragment(ItemsFragment.TYPE_INCOMES);
+                return ItemsFragment.CreateItemFragment(Item.TYPE_INCOMES);
             }
             case PAGE_EXPENSES:
-                return ItemsFragment.CreateItemFragment(ItemsFragment.TYPE_EXPENSES);
+                return ItemsFragment.CreateItemFragment(Item.TYPE_EXPENSES);
             case PAGE_BALANCE:{
                 return new BalanceFragment();
             }
             default:
                 break;
         }
-        return ItemsFragment.CreateItemFragment(ItemsFragment.TYPE_INCOMES);
+        return ItemsFragment.CreateItemFragment(Item.TYPE_INCOMES);
     }
 
     @Override

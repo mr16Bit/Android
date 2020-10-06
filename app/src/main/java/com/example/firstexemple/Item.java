@@ -1,25 +1,18 @@
 package com.example.firstexemple;
 
 public class Item {
-    private final String title;
-    private final int price;
-    private String comment;
+    public static final String TYPE_UNKNOWN = "unknown";
+    public static final  String TYPE_INCOMES = "incomes";
+    public static final  String TYPE_EXPENSES = "expenses";
 
-    public Item(String title, int price) {
-        this.title = title;
+    public int id;
+    public String name;
+    public int price;
+    public String type;
+
+    public Item(String title, int price, String type) {
+        this.name = title;
         this.price = price;
-
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public int getPrice() {
-        return price;
-    }
-
-    public String getComment() {
-        return comment;
+        this.type = type;
     }
 }
