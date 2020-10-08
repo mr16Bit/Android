@@ -1,5 +1,8 @@
 package com.example.firstexemple;
 
+import android.app.Activity;
+import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,6 +13,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -20,13 +24,16 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class ItemsFragment extends Fragment {
 
-    private static final String KEY_TYPE = "type";
+public class ItemsFragment extends Fragment {
+    public static final int ADD_RESULT = 951;
+    public static final String KEY_TYPE = "type";
+    private static final String TAG = "ItemsFragment";
     private String type;
 
     private RecyclerView recycler;
     private ItemsAdapter adapter;
+    SwipeRefreshLayout refresh;
 
     private Api api;
 
@@ -36,6 +43,15 @@ public class ItemsFragment extends Fragment {
         bundle.putString(KEY_TYPE, type);
         fragment.setArguments(bundle);
         return fragment;
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        if(requestCode == ADD_RESULT && resultCode == Activity.RESULT_OK){
+            Item item = Objects.requireNonNull(data).getParcelableExtra("result_item");
+            if(Objects.requireNonNull(item).type.equals(type))
+                adapter.addItem(item);
+        }
     }
 
     @Override
@@ -50,6 +66,7 @@ public class ItemsFragment extends Fragment {
         if (type.equals(Item.TYPE_UNKNOWN)) {
             throw new IllegalArgumentException("None type");
         }
+
 
 
         api = ((App) Objects.requireNonNull(getActivity(),"Not be null").getApplication()).getApi();
@@ -68,20 +85,48 @@ public class ItemsFragment extends Fragment {
         recycler.setLayoutManager(new LinearLayoutManager(getContext()));
         recycler.setAdapter(adapter);
 
+
+        refresh = view.findViewById(R.id.refresh);
+        refresh.setColorSchemeColors(Color.GREEN,Color.YELLOW,Color.CYAN);
+        refresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                loadItems();
+
+            }
+        });
         loadItems();
     }
 
     private void loadItems() {
+//        List<Item> list = new ArrayList<>();
+//        list.add(new Item("item1","200","a"));
+//        list.add(new Item("item1","200","a"));
+//        list.add(new Item("item1","200","a"));
+//        list.add(new Item("item1","200","a"));
+//        list.add(new Item("item1","200","a"));
+//        list.add(new Item("item1","200","a"));
+//        list.add(new Item("item1","200","a"));
+//        list.add(new Item("item1","200","a"));
+//        list.add(new Item("item1","200","a"));
+//        list.add(new Item("item1","200","a"));
+//        list.add(new Item("item1","200","a"));
+//        list.add(new Item("item1","200","a"));
+//        list.add(new Item("item1","200","a"));
+//        adapter.setData(list);
+//        refresh.setRefreshing(false);
+
         Call<List<Item>> call = api.getItems(type);
         call.enqueue(new Callback<List<Item>>() {
             @Override
             public void onResponse(@NotNull Call<List<Item>> call, @NotNull Response<List<Item>> response) {
                 adapter.setData(response.body());
+                refresh.setRefreshing(false);
             }
 
             @Override
             public void onFailure(@NotNull Call<List<Item>> call, @NotNull Throwable t) {
-
+                refresh.setRefreshing(false);
             }
         });
     }
@@ -111,7 +156,7 @@ public class ItemsFragment extends Fragment {
 //    }
 }
 
-    //HANDLER LOAD
+//HANDLER LOAD
 //    private void loadItems() {
 //        new LoadItemsTask(new Handler(callback)).start();
 //    }

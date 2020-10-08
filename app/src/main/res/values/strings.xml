@@ -9,6 +9,7 @@
     <string name="incomes">Доходы</string>
     <string name="expenses">Разходы</string>
     <string name="balance">Баланс</string>
+    <string name="bablo">Подсчет баблишка</string>
 
     <string-array name="tabs_title">
         <item>@string/incomes</item>

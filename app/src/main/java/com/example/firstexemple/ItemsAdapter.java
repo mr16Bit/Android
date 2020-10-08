@@ -39,6 +39,11 @@ class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.RecordViewHolder> {
         return data.size();
     }
 
+    public void addItem(Item item) {
+            data.add(0,item);
+            notifyItemChanged(0);
+    }
+
     protected static class RecordViewHolder extends RecyclerView.ViewHolder {
 
         private final TextView title;
@@ -53,7 +58,7 @@ class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.RecordViewHolder> {
         }
         public void applyDate(Item item){
             title.setText(item.name);
-            price.setText(String.format(Locale.US,"%d %s", item.price,symbol));
+            price.setText(String.format(Locale.US,"%s %s", item.price,symbol));
         }
     }
 }
