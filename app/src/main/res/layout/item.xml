@@ -5,6 +5,7 @@
     xmlns:tool="http://schemas.android.com/tools"
     android:layout_marginStart="10dp"
     android:layout_marginEnd="10dp"
+    android:background="@drawable/item_selected"
     android:layout_marginTop="5dp"
     android:layout_marginBottom="5dp"
     android:orientation="horizontal">
@@ -16,8 +17,7 @@
         android:layout_weight="1"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:background="@color/colorItem"
-        tool:text="Молоко asd asd asdasdasd asd asdasdasdasdsdasdasdasdasd"
+        tool:text="Молоко"
         />
     <TextView
         android:id="@+id/price"
@@ -27,7 +27,7 @@
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:background="@color/colorItemDark"
-        tool:text="68151651654₽"
+        tool:text="54₽"
         />
 
 

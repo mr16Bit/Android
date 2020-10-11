@@ -12,6 +12,7 @@
     
     <color name="colorItem">#E87924</color>
     <color name="colorItemDark">#B1550F</color>
+    <color name="colorItemSelected">#672E03</color>
 
     
     

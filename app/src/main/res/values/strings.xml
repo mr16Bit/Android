@@ -9,6 +9,12 @@
     <string name="incomes">Доходы</string>
     <string name="expenses">Разходы</string>
     <string name="balance">Баланс</string>
+    <string name="remove">Удалить</string>
+    <string name="remove_confirm">Вы уверены ?</string>
+    <string name="confirm_positive">Да</string>
+    <string name="confirm_negative">Нет</string>
+
+
 
     <string-array name="tabs_title">
         <item>@string/incomes</item>

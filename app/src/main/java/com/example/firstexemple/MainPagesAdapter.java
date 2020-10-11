@@ -27,8 +27,9 @@ public class MainPagesAdapter extends FragmentPagerAdapter {
             case PAGE_INCOMES:{
                 return ItemsFragment.CreateItemFragment(Item.TYPE_INCOMES);
             }
-            case PAGE_EXPENSES:
+            case PAGE_EXPENSES: {
                 return ItemsFragment.CreateItemFragment(Item.TYPE_EXPENSES);
+            }
             case PAGE_BALANCE:{
                 return new BalanceFragment();
             }
